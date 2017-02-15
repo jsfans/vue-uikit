@@ -1,0 +1,30 @@
+// ==================================================
+// Grid system
+// ==================================================
+@import '../common'
+
+$col
+  position relative
+  display block
+  float left
+  flex 0 0 auto
+
+.x-row
+  position relative
+  width 100%
+  clearfix()
+
+for i in (1..grid-columns)
+  .x-col-{i}
+    @extend $col
+    width ((100 / grid-columns) * i)%
+
+  unless i is grid-columns
+    .x-col-offset-{i}
+      margin-left ((100 / grid-columns) * i)%
+
+    .x-col-push-{i}
+      left ((100 / grid-columns) * i)%
+
+    .x-col-pull-{i}
+      right ((100 / grid-columns) * i)%
